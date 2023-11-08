@@ -20,7 +20,7 @@ import tooks.InputFromKeyboard;
 
 /**
  *
- * @author Melnikov
+ * @author pupil
  */
 public class App {
     private final Scanner scanner;
