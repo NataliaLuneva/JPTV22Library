@@ -71,7 +71,7 @@ public class BookManager {
         int copyNumber = InputFromKeyboard.inputNumberFromRange(1, 10);
         books.get(bookNumber-1).setQuantity(books.get(bookNumber-1).getQuantity()
                 + copyNumber);
-        books.get(bookNumber-1).setCount(books.get(bookNumber-1).getCount() + 
-                copyNumber);
+        books.get(bookNumber-1).setCount(books.get(bookNumber-1).getCount() 
+                + copyNumber);
     }
 }
