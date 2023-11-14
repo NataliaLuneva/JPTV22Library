@@ -1,62 +1,54 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package enttity;
 
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
-/**
- *
- * @author pupil
- */
-   public class Book implements Serializable{
-        private String title;
-        private int publishedYear;
-        private Author[] authors = new Author[0];
-        private int qantity; // Всего закупленных в библиотеку экземпляров.
-        private int count; // Экземпляров в наличии.
+
+
+public class Book implements Serializable{
+    private String title;
+    private int publishedYear;
+    private Author[] authors = new Author[0];
+    private int quantity; //Всего закупленных в библиотеку экземпляров
+    private int count; //экземпляров в наличии.
 
     public Book() {
     }
 
-    public Book(String title, int publishedYear, int qantity, int count) {
+    public Book(String title, int publishedYear, int quantity, int count) {
         this.title = title;
         this.publishedYear = publishedYear;
-        this.qantity = qantity;
+        this.quantity = quantity;
         this.count = count;
     }
-    
 
-        @Override
-        public String toString() {
-            return "Book{"
-                    + "title " + title
-                    + ", publishedYear"
-                    + "" + publishedYear
-                    + ", authors " + Arrays.toString(authors)
-                    + ", qantity =" + qantity
-                    + ", count =" + count
-                    + '}';
-        }
+    
+    @Override
+    public String toString() {
+        return "Book{" 
+                + "title=" + title 
+                + ", publishedYear=" + publishedYear 
+                + ", authors=" + Arrays.toString(authors) 
+                + ", quantity=" + quantity
+                + ", count=" + count
+                + '}';
+    }
 
     public void addAuthor(Author author) {
         /*
-        *1.создать копию authors с дополнительной пустой ячейкой
-        *2. Добавить в пустую ячейку ссылку author полученный из параметра
-        */
+         * 1. создать копию athors с дополнительной пустой ячейкой
+         * 2. добавить в пустую ячейку ссылку на author полученый из параметра
+         */
         this.authors = Arrays.copyOf(this.authors, this.authors.length + 1);
-        this.authors[this.authors.length - 1] = author;
+        this.authors[this.authors.length-1] = author;
     }
 
-    public int getQantity() {
-        return qantity;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setQantity(int qantity) {
-        this.qantity = qantity;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public int getCount() {
@@ -93,12 +85,12 @@ import java.util.Objects;
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 43 * hash + Objects.hashCode(this.title);
-        hash = 43 * hash + this.publishedYear;
-        hash = 43 * hash + Arrays.deepHashCode(this.authors);
-        hash = 43 * hash + this.qantity;
-        hash = 43 * hash + this.count;
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.title);
+        hash = 53 * hash + this.publishedYear;
+        hash = 53 * hash + Arrays.deepHashCode(this.authors);
+        hash = 53 * hash + this.quantity;
+        //hash = 53 * hash + this.count;
         return hash;
     }
 
@@ -117,18 +109,16 @@ import java.util.Objects;
         if (this.publishedYear != other.publishedYear) {
             return false;
         }
-        if (this.qantity != other.qantity) {
+        if (this.quantity != other.quantity) {
             return false;
         }
-        if (this.count != other.count) {
-            return false;
-        }
+//        if (this.count != other.count) {
+//            return false;
+//        }
         if (!Objects.equals(this.title, other.title)) {
             return false;
         }
-        if (!Arrays.deepEquals(this.authors, other.authors)) {
-            return false;
-        }
-        return true;
+        return Arrays.deepEquals(this.authors, other.authors);
     }
+
 }

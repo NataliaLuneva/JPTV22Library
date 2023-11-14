@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package enttity;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- *
- * @author pupil
- */
+
 public class Author implements Serializable{
-        private String firstname;
-        private String lastname;
+    private String firstname;
+    private String lastname;
 
     public Author() {
     }
@@ -23,7 +15,15 @@ public class Author implements Serializable{
         this.firstname = firstname;
         this.lastname = lastname;
     }
-     
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
     public String getFirstname() {
         return firstname;
     }
@@ -32,19 +32,11 @@ public class Author implements Serializable{
         this.firstname = firstname;
     }
 
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }  
-
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.firstname);
-        hash = 89 * hash + Objects.hashCode(this.lastname);
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.firstname);
+        hash = 31 * hash + Objects.hashCode(this.lastname);
         return hash;
     }
 
@@ -68,12 +60,13 @@ public class Author implements Serializable{
         }
         return true;
     }
-     
+
     @Override
-        public String toString() {
-            return "Author: "
-                    + "firstname: " + firstname
-                    + ", lastname: " + lastname
-                    + ' ';
-        }
+    public String toString() {
+        return "Author" 
+                + "" + firstname 
+                + ", " + lastname 
+                + ' ';
+    }
+    
 }

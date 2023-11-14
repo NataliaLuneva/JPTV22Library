@@ -1,18 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package enttity;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-/**
- *
- * @author pupil
- */
+
 public class History implements Serializable{
     private Book book;
     private Reader reader;
@@ -64,10 +56,10 @@ public class History implements Serializable{
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 83 * hash + Objects.hashCode(this.book);
-        hash = 83 * hash + Objects.hashCode(this.reader);
-        hash = 83 * hash + Objects.hashCode(this.giveBookToReaderDate);
-        hash = 83 * hash + Objects.hashCode(this.returnBook);
+        hash = 17 * hash + Objects.hashCode(this.book);
+        hash = 17 * hash + Objects.hashCode(this.reader);
+        hash = 17 * hash + Objects.hashCode(this.giveBookToReaderDate);
+        hash = 17 * hash + Objects.hashCode(this.returnBook);
         return hash;
     }
 
@@ -100,13 +92,14 @@ public class History implements Serializable{
 
     @Override
     public String toString() {
-        return "History{" 
-                + "book=" + book.getTitle()
-                + ", reader=" + reader.getFirstname()
+        return "History" 
+                + "book " + book.getTitle()
+                + ", reader " + reader.getFirstname()
                 + " " + reader.getLastname()
-                + ", giveBookToReaderDate=" + giveBookToReaderDate 
-                + ", returnBook=" + returnBook 
-                + '}';
+                + ", give Book To Reader Date " + giveBookToReaderDate 
+                + ", returnBoo =" + returnBook 
+                + ' ';
     }
+    
     
 }

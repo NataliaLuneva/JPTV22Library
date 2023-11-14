@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jptv22library;
 
 import enttity.History;
@@ -18,25 +13,20 @@ import java.util.Scanner;
 import managers.SaveManager;
 import tooks.InputFromKeyboard;
 
-/**
- *
- * @author pupil
- */
+
 public class App {
     private final Scanner scanner;
-    //private Book[] books;
     private List<Book> books;
     private List<Reader> readers;
     private List<History> histories;
     private final BookManager bookManager;
     private final ReaderManager readerManager;
-    private HistoryManager historyManager;
-    private SaveManager saveManager;
+    private final HistoryManager historyManager;
+    private final SaveManager saveManager;
     
     public App() {
         this.scanner = new Scanner(System.in);
         this.saveManager = new SaveManager();
-        //this.books = saveManager.loadBooks();//инициализация поля books и сюда считаем инфу из файла
         this.books = saveManager.loadBooks();
         this.readers = saveManager.loadReaders();
         this.histories = saveManager.loadHistories();
@@ -44,10 +34,7 @@ public class App {
         this.readerManager = new ReaderManager(scanner);
         this.historyManager = new HistoryManager(scanner);
     }
-    
-    
-    
-    
+
     void run() {
         boolean repeat = true;
         System.out.println("------ Library ------");
@@ -61,8 +48,9 @@ public class App {
             System.out.println("5. Give the book to the reader");
             System.out.println("6. Return book");
             System.out.println("7. Print list readed books");
+            System.out.println("8. Add a copy of an existing book in the library");
             System.out.print("Enter number task: ");
-            int task = InputFromKeyboard.inputNumberFromRange(0,7);
+            int task = InputFromKeyboard.inputNumberFromRange(0,9);
             switch (task) {
                 case 0:
                     repeat = false;
@@ -76,7 +64,7 @@ public class App {
                     saveManager.saveReaders(readers);
                     break;
                 case 3:
-                    bookManager.pirntListBooks(books);
+                    bookManager.printListBooks(books);
                     break;
                 case 4:
                     readerManager.pirntListReaders(readers);
@@ -84,7 +72,8 @@ public class App {
                 case 5:
                     History history = historyManager.giveBookToReader(readers, books);
                     if(history != null){
-                        this.histories.add(history);
+                        histories.add(history);
+                        saveManager.saveHistories(histories);
                     }
                     break;
                 case 6:
@@ -94,29 +83,15 @@ public class App {
                 case 7:
                     historyManager.printListReadingBooks(histories);
                     break;
+                case 8:
+                    bookManager.addCopyOfExistingBookInLibrary(books);
+                    break;
                 default:
                     System.out.println("Select number from list tasks!");
             }
+            System.out.println("-------------------------");
         }while(repeat);
     }
 
-//    private void addBookToBooks(Book book) {
-//        this.books = Arrays.copyOf(this.books, this.books.length + 1);
-//        this.books[this.books.length - 1] = book;
-//        saveManager.saveBooks(this.books);//save to file
-//    }
-
-//    private void addReaderToReaders(Reader reader) {
-//        this.readers = Arrays.copyOf(this.readers, this.readers.length + 1);
-//        this.readers[this.readers.length - 1] = reader;
-//        saveManager.saveReaders(readers);
-//    }
-//    private void addHistoryToHistories(History history) {
-//        this.histories = Arrays.copyOf(this.histories, this.histories.length + 1);
-//        this.histories[this.histories.length - 1] = history;
-//        saveManager.saveHistories(histories);
-//    }
-
-    
     
 }
